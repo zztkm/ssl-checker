@@ -23,15 +23,18 @@ const Index = ({ results, build_time }: Props) => {
         <Container>
           <Intro />
           <div>チェック時刻: {build_time}</div>
-          <div>
+          <table className="shadow-lg bg-white">
+            <tr>
+              <th className="bg-blue-100 border text-left px-8 py-4">Domain</th>
+              <th className="bg-blue-100 border text-left px-8 py-4">Is SSL</th>
+            </tr>
             {results.map((result) => (
-              <div key={result.domain}>
-                ドメイン: {result.domain}
-                <br />
-                結果: {result.isSsl ? 'SSL対応されています' : 'SSL対応されていません'}
-              </div>
+              <tr>
+                <td className="border px-8 py-4">{result.domain}</td>
+                <td className="border px-8 py-4">{result.isSsl ? 'TRUE' : 'FALSE'}</td>
+              </tr>
             ))}
-          </div>
+          </table>
         </Container>
       </Layout>
     </>
