@@ -15,8 +15,11 @@ init:
 
 ```shell
 clasp login
+```
 
-clasp clone [SCRIPT_ID]
+create `.clasp.json`
+```json
+{"scriptId":"YOUR_SCRIPT_ID"}
 ```
 
 deploy:

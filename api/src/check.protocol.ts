@@ -1,3 +1,8 @@
+interface Result {
+	hostname: string;
+	url: string;
+}
+
 const getHostnameFromString = function (url: string) {
 	const result = url.replace(/\\/g, '/').match(/\/\/([^/]*)/);
 	if (!result) return '';
@@ -16,15 +21,19 @@ function doGet() {
 	}
 
 	const data = sheet.getRange(3, 2, sheet.getLastRow() - 2).getValues();
-	let domains: Array<String> = [];
+	let results: Array<Result> = [];
 
 	for (const url of data) {
 		const hostName = getHostnameFromString(url[0]);
-		domains.push(hostName);
+		const result: Result = {
+			hostname: hostName,
+			url: url[0]
+		}
+		results.push(result);
 	}
 
 	const body = {
-		"domains": domains
+		"results": results
 	}
 
 	let response = ContentService.createTextOutput();
