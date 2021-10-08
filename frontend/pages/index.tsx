@@ -29,7 +29,7 @@ const Index = ({ results, build_time }: Props) => {
               <th className="bg-blue-100 border text-left px-8 py-4">Is SSL</th>
             </tr>
             {results.map((result) => (
-              <tr>
+              <tr key={result.domain}>
                 <td className="border px-8 py-4">{result.domain}</td>
                 <td className="border px-8 py-4">{result.isSsl ? 'TRUE' : 'FALSE'}</td>
               </tr>
