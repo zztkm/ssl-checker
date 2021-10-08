@@ -1,5 +1,5 @@
 import sslChecker from 'ssl-checker';
-import { Result } from '../interface/ssl-check-result';
+import { ApiResponse, Result } from '../interface/ssl-check-result';
 
 
 const getSslDetails = async function (hostname: string) {
@@ -7,16 +7,25 @@ const getSslDetails = async function (hostname: string) {
 	return value
 }
 
+const getUrl = function (hostname: string, valid: boolean) {
+	if (valid) {
+		const url = `https://${hostname}/`
+	} else {
+		const url = `http://${hostname}/`
+	}
+}
+
 export async function getAllDomainCheckResult() {
-	const res = await fetch('https://script.google.com/macros/s/AKfycbyLnUse8vyG7Vfyz8OFRrDQwljNsk6qAz01ZbSTMkxgW9gcdhyBHfI80QjOgQE6ijGp/exec')
+	const res = await fetch('https://script.google.com/macros/s/AKfycbxAuoYc2L1N2GWbPncI0AWDBWAHPixSPTXthy7utHsUxeHi-t7FZ1GN-3f4Ack0NX3W/exec')
 	const json = await res.json()
-	const domains: Array<string> = json.domains
+	const response: Array<ApiResponse> = json.results
 
 	let data: Array<Result> = [];
-	for (const domain of domains) {
-		const value = await getSslDetails(domain);
+	for (const res of response) {
+		const value = await getSslDetails(res.hostname);
 		const result: Result = {
-			domain: domain,
+			domain: res.hostname,
+			url: res.url,
 			isSsl: value.valid
 		}
 		data.push(result)
