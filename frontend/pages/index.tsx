@@ -26,7 +26,7 @@ const Index = ({ results, build_time }: Props) => {
           <table className="shadow-lg bg-white">
             <tr>
               <th className="bg-blue-100 border text-left px-8 py-4">Domain</th>
-              <th className="bg-blue-100 border text-left px-8 py-4">Is SSL</th>
+              <th className="bg-blue-100 border text-left px-8 py-4">SSL-enabled</th>
             </tr>
             {results.map((result) => (
               <tr key={result.domain}>
