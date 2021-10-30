@@ -1,14 +1,3 @@
-interface Result {
-	hostname: string;
-	url: string;
-}
-
-const getHostnameFromString = function (url: string) {
-	const result = url.replace(/\\/g, '/').match(/\/\/([^/]*)/);
-	if (!result) return '';
-	return result[1];
-};
-
 function doGet() {
 	const ss_id = '1c25pvMyjQ89OBCvB9whCQQLM_BPXKyY7umsj5wmpP2k'
 	const sheet_name = 'NOT_SSL_LIST'
@@ -20,20 +9,15 @@ function doGet() {
 		return;
 	}
 
-	const data = sheet.getRange(3, 2, sheet.getLastRow() - 2).getValues();
-	let results: Array<Result> = [];
+	const data = sheet.getRange(3, 3, sheet.getLastRow() - 2).getValues();
+	let results: Array<string> = [];
 
-	for (const url of data) {
-		const hostName = getHostnameFromString(url[0]);
-		const result: Result = {
-			hostname: hostName,
-			url: url[0]
-		}
-		results.push(result);
+	for (const hostname of data) {
+		results.push(hostname[0]);
 	}
 
 	const body = {
-		"results": results
+		"hostnames": results
 	}
 
 	let response = ContentService.createTextOutput();
