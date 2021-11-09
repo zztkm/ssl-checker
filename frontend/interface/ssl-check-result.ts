@@ -1,10 +1,10 @@
-export interface Result {
-	domain: string;
-	url: string;
-	isSsl: boolean;
+export interface IsSslResponse {
+    host: string;
+    valid: boolean;
+    version: string;
+    error: string;
 }
 
-export interface ApiResponse {
-	hostname: string;
-	url: string;
+export interface GetHostNameApiResponse {
+	hostnames: Array<string>;
 }
