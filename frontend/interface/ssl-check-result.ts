@@ -1,18 +1,10 @@
-export interface Result {
-	domain: string;
-	url: string;
-	isSsl: string;
-}
-
-export interface ApiResponse {
-	hostname: string;
-	url: string;
-}
-
-export interface ErrorIResolvedValues {
+export interface IsSslResponse {
+  host: string;
   valid: boolean;
-  validFrom: string;
-  validTo: string;
-  daysRemaining: number;
-  validFor: string[];
+  version: string;
+  error: string;
+}
+
+export interface GetHostNameApiResponse {
+  hostnames: Array<string>;
 }

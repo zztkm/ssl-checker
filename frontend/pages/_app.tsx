@@ -1,7 +1,14 @@
 import type { AppProps } from 'next/app'
 import '../styles/index.css'
+import { usePageView, GoogleAnalytics } from '../components/gtag'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  usePageView()
+  return (
+    <>
+      <GoogleAnalytics />
+      <Component {...pageProps} />
+    </>
+  )
 }
 export default MyApp

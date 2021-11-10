@@ -1,4 +1,7 @@
 module.exports = {
+	corePlugins: {
+		tableLayout: true,
+	},
 	purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
 	theme: {
 		extend: {
