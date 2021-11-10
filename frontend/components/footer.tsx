@@ -27,7 +27,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="text-center px-6 py-2">
-                    <div>©ピスタチオゲーム部 2021</div>
+                    <div>©ピスタチオスタジオゲーム部 2021</div>
                     <div>This site uses Google Analytics</div>
                     <Link href="/policy">
                         <a className="text-blue-600 hover:underline">プライバシーポリシー</a>
