@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Container from '../components/container'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
+import SslCheckResultTable from '../components/ssl-check-result-table'
 import { IsSslResponse } from '../interface/ssl-check-result'
 import { getAllDomainCheckResult } from '../lib/api'
 import { getBuildTime } from '../lib/util'
@@ -23,22 +24,7 @@ const Index = ({ results, build_time }: Props) => {
         <Container>
           <Intro />
           <div>チェック時刻: {build_time}</div>
-          <table className="shadow-lg bg-white">
-            <tr>
-              <th className="bg-blue-100 border text-left px-8 py-4">Domain</th>
-              <th className="bg-blue-100 border text-left px-5 py-4">SSL-enabled</th>
-              <th className="bg-blue-100 border text-left px-8 py-4">TLS/SSL-version</th>
-              <th className="bg-blue-100 border text-left px-8 py-4">TLS/SSL Error</th>
-            </tr>
-            {results.map((result) => (
-              <tr key={result.host}>
-                <td className="border px-8 py-4">{result.host}</td>
-                <td className="border text-center px-6 py-4">{result.valid ? 'TRUE' : 'FALSE'}</td>
-                <td className="border text-center px-8 py-4">{result.version}</td>
-                <td className="border text-left px-8 py-4">{result.error}</td>
-              </tr>
-            ))}
-          </table>
+          <SslCheckResultTable results={results} />
         </Container>
         <br />
       </Layout>
