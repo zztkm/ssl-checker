@@ -2,7 +2,7 @@ import { GetHostNameApiResponse, IsSslResponse } from '../interface/ssl-check-re
 import { GET_HOST_NAME_API_URL, SSL_CHECK_API_URL } from './constants';
 
 
-const checkSsl = async function (hostnames: Array<string>) {
+const checkSslBulk = async function (hostnames: Array<string>) {
 	const data = {
 		hostnames: hostnames
 	}
@@ -17,11 +17,10 @@ const checkSsl = async function (hostnames: Array<string>) {
 	return response
 }
 
-
 export async function getAllDomainCheckResult() {
 	const res = await fetch(GET_HOST_NAME_API_URL)
 	const response: GetHostNameApiResponse = await res.json()
 
-	const isSslRes = await checkSsl(response.hostnames);
+	const isSslRes = await checkSslBulk(response.hostnames);
 	return isSslRes
 }
