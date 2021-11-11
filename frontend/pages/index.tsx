@@ -17,7 +17,7 @@ const Index = ({ results, build_time }: Props) => {
     <>
       <Layout>
         <Head>
-          <title>TLS/SSL Checker</title>
+          <title>SSL/TLS Checker</title>
           <meta name="description" content="Check if the domain is SSL-enabled" />
           <link rel="icon" href="/favicon.ico" />
         </Head>

@@ -14,7 +14,7 @@ const Policy = () => {
 					Google Analyticsについて
 				</h2>
 				<p>
-					TLS/SSL Checkerでは利用状況を把握するためにGoogle Analyticsを利用しています。
+					SSL/TLS Checkerでは利用状況を把握するためにGoogle Analyticsを利用しています。
 				</p>
 				<p>
 					Google Analytics から提供されるCookie を使用していますが、Google Analytics によって個人を特定する情報は取得していません。
